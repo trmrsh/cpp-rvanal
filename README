@@ -1,0 +1,10 @@
+
+The 'rvanal' package deals with statistical tests of sinusoid fits,
+with radial velocity curves of circular orbits particularly in
+mind. The sorts of things it does are to determine the best period, to
+plot out the best period and competeing aliases, etc. It can also help
+with optimising placement of observations.
+
+Read the file INSTALL for installation instructions.
+
+Tom Marsh

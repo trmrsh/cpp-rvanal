@@ -1,0 +1,174 @@
+#!/usr/bin/perl 
+#
+# Overall documentation script for the rvanal radial
+# velocity analysis routines.
+
+(@ARGV == 1) or die "usage: directory\n";
+
+$html = shift;
+
+require "document.pl";
+$time = localtime;
+
+# Command classes. Individual files require pointers
+# to these to get into them.
+
+%classes = (
+	    'Program'    => 'Programs.',
+	    'Headers'    => 'Header files.',
+	    'Display'    => 'Programs that display information.',
+	    );
+
+# now generate individual command documentation.
+
+foreach $file ('aliases.cc', 'bayes.cc', 'dprob.cc', 'pgram.cc', 
+	       'pfold.cc', 'nthalias.cc', 'sindet.cc', 'sinfalse.cc', 
+	       'pdist.cc', 'vtest.cc'){
+    document("../src/$file",$html,"html","html","");
+}
+
+# generate overall index file
+
+open(INDEX, ">$html/index.html") or die "Could not open index file\n";
+print INDEX <<END1;
+<html>
+<head>
+<title>Radial velocity analysis package, Version ZzZzZ</title>
+<link rel=stylesheet href="style.css" type="text/css">
+</head>
+<body>
+
+<h1>Radial velocity analysis package version ZzZzZ</h1>
+<p>
+This is the main page for documentation on a suite of
+C++ programs for finding periods and other things given
+a file of times and radial velocities. You have come to the
+right place if you are interested in periodograms, identifying
+aliases, detection probabilities and the like.
+
+<p>
+<table>
+<tr><td><a href="Alphabet.html">Alphabetical</a></td>
+<td>Alphabetical list of all software components.</td></tr>
+<tr><td><a href="Classified.html">Classified</a></td>
+<td>Components classified by function.</td></tr>
+<tr><td><a href="GettingStarted.html">Getting started</a></td>
+<td>A very short guide on getting going with the software.</td></tr>
+<tr><td><a href="Changes.html">Changes</a></td>
+<td>Log of changes to the software from 17/09/2004.</td></tr>
+<tr><td><a href="api/html/index.html">API</a></td>
+<td>Programming details</td></tr>
+</table>
+
+<h2>Installation</h2>
+
+<p>
+To install, download the <a href="http://quetzel.csc.warwick.ac.uk/phsaap/software/rvanal.tar.gz">gzipped tar file</a>
+</td>, gunzip and tar xvf it. A new directory will be created. Change directory into it and read the README file. Get in touch
+with me if you have problems; there may be bits missing but this is normally very easy to fix.
+
+<p><hr>
+<address>Page generated $time</address>
+</body></html>
+END1
+close(INDEX);
+
+open(CLASSI, ">$html/Classified.html") or die "Could not open class index file\n";
+print CLASSI <<END2;
+<html><head>
+<title>Radial velocity routines by class</title>
+<link rel=stylesheet href="style.css" type="text/css">
+</head>
+<body>
+<h1>Radial velocity routines by class</h1>
+<p>
+This page gives links to lists of routines grouped by class.
+The same command may appear in more than one list; some may
+not appear in any list.
+
+<p>
+<table>
+END2
+
+# write class entries and class pages at the same time
+
+foreach $class (sort keys %classes){
+    print CLASSI
+	"<tr><td><a href=\"$class.html\">$class</a></td>".
+	    "<td>$classes{$class}</td></tr>\n";
+
+    open(CLASS,">$html/$class.html") or die "Could not open html/$class.html\n";
+    print CLASS "<html><head>\n";
+    print CLASS "<title>$classes{$class}</title>\n";
+    print CLASS "<link rel=stylesheet href=\"style.css\" type=\"text/css\">\n";
+    print CLASS "</head>\n<body>\n";
+    print CLASS "<h1>$classes{$class}</h1>\n\n<p>\n";
+    print CLASS "<table>\n";
+    foreach $item (sort keys %index){
+	$print = 0;
+	foreach $clss (@{$index{$item}->{class}}){
+	    if($clss eq $class){$print = 1;}
+	}
+	if($print){
+	    print CLASS "<tr><td><a href=\"$index{$item}->{file}\">$item</a>".
+		"</td><td>$index{$item}->{description}</td>\n";
+	}
+    }
+    print CLASS "</table><p><hr>\n";
+    print CLASS "<address>Page generated $time</address>\n";
+    print CLASS "</body></html>\n";
+    close(CLASS);
+}
+
+# finish off class index file
+
+print CLASSI <<END3;
+</table>
+
+<p><hr>
+<address>Page generated $time</address>
+</body></html>
+END3
+close(CLASSI);
+
+
+# write alphabetical list of all commands.
+
+open(ALPHA, ">$html/Alphabet.html") or die "Could not open command list\n";
+print ALPHA <<END4;
+<html><head>
+<title>List of radial velocity</title>
+<link rel=stylesheet href="style.css" type="text/css">
+</head>
+<body>
+<h1>Radial velocity component list</h1>
+<p>
+This page gives links to all software components in the 
+radial velocity package. 
+
+<p>
+<table>
+END4
+
+foreach $item (sort keys %index){
+    print ALPHA "<tr><td><a href=\"$index{$item}->{file}\">$item</a>".
+	"</td><td>$index{$item}->{description}</td>\n";
+}
+
+print ALPHA "</table><p><hr>\n";
+print ALPHA "<address>Page generated $time</address>\n";
+print ALPHA "</body></html>\n";
+close(ALPHA);
+
+exit;
+
+
+
+
+
+
+
+
+
+
+

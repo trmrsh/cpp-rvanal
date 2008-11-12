@@ -1,0 +1,32 @@
+#!/bin/csh -v
+#
+# (Partially) tests the rvanal distribution
+
+cd ~/test_install
+
+scp phsaap@quetzel.csc.warwick.ac.uk:/var/www/html/phsaap/software/rvanal.tar.gz .
+
+tar xvfz rvanal.tar.gz
+
+set dir = `ls | grep 'rvanal-'`
+
+cd $dir/rvanal
+
+setenv TRM_SOFTWARE /tmp/software
+
+./configure --prefix=$TRM_SOFTWARE
+
+make
+
+make install
+
+cd ../..
+
+rm -rf $dir
+
+rm rvanal.tar.gz
+
+exit
+
+
+

@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>rvanal software change log</title>
+<link rel=stylesheet href="subs.css" type="text/css">
+</head>
+<body>
+<h1>rvanal software change log</h1>
+
+<p>
+This file to records changes to the 'rvanal' software. Each entry has a date, a list of affected components and comments.
+Look here to see what might have changed since your version of the software.
+
+<p>
+<table>
+
+<tr valign="top"><td><strong>
+02/01/08
+</strong></td><td><i>
+aliases.cc<br>
+<font color=red>Version 1.0.7</font>
+</i></td><td>
+Updates for withdrawal of SOFA
+</td></tr>
+
+<tr valign="top"><td><strong>
+21/08/06
+</strong></td><td><i>
+<font color=red>Version 1.0.5</font>
+</i></td><td>
+Update for return of the server
+</td></tr>
+
+<tr valign="top"><td><strong>
+10/04/06
+</strong></td><td><i>
+dprob.cc
+</i></td><td>
+Added output of parameters.
+</td></tr>
+
+<tr valign="top"><td><strong>
+22/03/06
+</strong></td><td><i>
+Lots<br>
+<font color=red>Version 1.0.4</font>
+</i></td><td>
+Portability changes. rvanal.h to trm_rvanal.h, and corresponding
+subs-related ones.
+</td></tr>
+
+<tr valign="top"><td><strong>
+26/08/05
+</strong></td><td><i>
+Installation<br>
+<font color=red>Version 1.0.3</font>
+</i></td><td>
+Major changes to the installation could well not work.
+</td></tr>
+
+<tr valign="top"><td><strong>
+11/08/05
+</strong></td><td><i>
+pgram.cc
+</i></td><td>
+Added a few more arguments to allow more control over what is plotted. Fixed a
+minor bug.
+</td></tr>
+
+<tr valign="top"><td><strong>
+10/08/05
+</strong></td><td><i>
+aliases.cc
+</i></td><td>
+Put in option to scale to effectively make reduced chi**2 = 1 in order that
+competing aliases are not artificially removed from consideration.
+</td></tr>
+
+<tr valign="top"><td><strong>
+10/08/05
+</strong></td><td><i>
+lots
+</i></td><td>
+Removed HJD specific stuff as far as possible. Now no particular time is implied
+as it does not matter for most routines. Exception is 'aliases' for which HMJD,
+i.e. heliocentric MJDs are expected. Also removed hidden nature of the
+oversampling parameter.
+</td></tr>
+
+<tr valign="top"><td><strong>
+17/09/04
+</strong></td><td><i>
+dprob.cc
+</i></td><td>
+Changed from Array1D to Buffer1D. Fixed bug in subs function 'tchi' that
+was putting it an infinite loop for large numbers of points.
+</td></tr>
+
+</table>
+
+<p>
+<address>
+Tom Marsh, Warwick
+</address> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

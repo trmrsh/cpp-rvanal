@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Getting started with the radial velocity analysis</title>
+<link rel=stylesheet href="rvanal.css" type="text/css">
+</head>
+<body>
+<h1>Getting started with the radial velocity analysis software</h1>
+
+<p>
+This page attempts to give you an idea of how to get going with the software,
+without going into extensive details. Follow the links for further information.
+
+<p>
+Suppose you are observing, and have a few radial velocity measurements in the bag
+on a particular star. You need to have them in a little file listing the time 
+(strictly HJD, but JD would be OK for longish orbital periods), the radial velocity
+and a 1 sigma uncertainty estimate. e.g it might loook like this
+<pre>
+#
+# RV data on an interesting target
+#
+2450016.76512 -123.5 1.4
+2450017.78058  56.9  2.5
+2450018.72001 -43.1  2.1
+2450018.83101 -15.1  2.0
+</pre>
+
+<p>
+At this point, your target is clearly a binary star, and you want to know (a) what periods
+are possible, but, more importantly, (b) when should I observe to best discriminate between
+the possible aliases?
+
+<p>
+The program you want to use is <a href="aliases.html">aliases</a>. This can be run with
+or without plotting. Assuming you have run the script to define the (computer) aliases, 
+just type 'aliases' and it will prompt you. Look at the on-line help for details of the
+arguments. Without plotting, it just lists the best periods over a specified range
+of frequencies (it searches a uniform grid of frequency). With plotting, it also requires
+the name of a file with positional data on stars and the name of the star you are interested
+in. For example:
+<pre>
+Star 1
+19 23 34.0 -23 04 51.0 2000
+
+Star 2
+21 02 34.0 +45 56 12.0 2000
+
+</pre>
+It always assumes J2000 coords; the 2000 at the end just means the
+date of the equinox to precess to. Its very picky; you must give it
+<strong>exactly</strong> the right name, including case, e.g. "Star
+2". You also need to specify a date; its not that flexible about the
+date format, so copy the format of the suggested value.
+
+<p>
+You will then get a plot of velocity versus time for the night in question, with the predicted
+path of each alias. It will also plot any data for that night (quite often none if you are predicting
+ahead of time). Its up to you to decide when is best to observe at this point, but clearly
+the times where the predictions differ most are the ones to go for. Before you take this plot
+too seriously, take a look at the predicted uncertainty in phase. If this is huge, then you
+should not take the plot seriously, or worry too much about when to observe. Once the phase
+uncertainty becomes small however, then this optimisation of times can be very useful.
+
+<p>
+Another command you may find useful is <a href="pgram.html">pgram</a> to plot a periodogram
+(although note that it plots Chi**2 so the "troughs" are the good periods ... this is because then
+one does not have to fiddle around with the vertical axis limits to zoom in vertically on a 
+good peak). Finally, <a href="pfold.html">pfold</a> plots a phase-folded radial velocity curve.
+Always remember that the best period almost always looks good when phase-folded, but this does not
+always mean that it is in fact correct.
+
+<p>
+Note that all commands can be run on the command-line, as in 
+<pre>
+aliases junk 0.01 20 20 30 0.01 1.4 2 yes /xs "19 Jan 2003" WHT stars.dat "Star 1"
+</pre>
+Arguments with spaces have to be quoted to be treated as single arguments. I have simulated
+the command-line behaviour of STARLINK commands so you could next time say
+<pre>
+aliases data=junk fhigh=30 fmax=2 \\
+</pre>
+which just changes the specified arguments and uses the old values for the rest.
+
+<p>
+Good luck and let me know of problems.
+  
+<p>
+<address>
+Tom Marsh, Warwick
+</address> 
+</body>
+</html>
