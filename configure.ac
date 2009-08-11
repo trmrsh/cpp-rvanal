@@ -41,7 +41,7 @@ AC_CHECK_LIB([pcrecpp], [main], [], AC_MSG_ERROR(cannot find the pcre C++ librar
 
 AC_CHECK_HEADERS([stdlib.h float.h math.h sstream string fstream iostream], [], AC_MSG_ERROR(missing header; please fix))
 
-AC_CHECK_HEADERS([pcrecpp.h slalib.h cpgplot.h], [], AC_MSG_ERROR(missing header; please fix))
+AC_CHECK_HEADERS([pcrecpp.h slalib.h], [], AC_MSG_ERROR(missing header; please fix))
 
 dnl PGPLOT has its own macro 'cos its a pain
 TRM_LIB_PGPLOT
