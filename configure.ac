@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([rvanal], [1.0.10])
+AC_INIT([rvanal], [1.0.9])
 
 AC_CONFIG_SRCDIR([src/pdist.cc])
 
