@@ -1,8 +1,8 @@
 ## Process this file with automake to generate Makefile.in
 
-SUBDIRS = src doc include
+ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = pgplot_libs
+SUBDIRS = src doc include
 
 export: dist
 	scp $(PACKAGE)-$(VERSION).tar.gz $(WEB_SERVE):$(WEB_PATH)/software/.

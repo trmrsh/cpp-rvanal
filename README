@@ -1,10 +1,7 @@
 
-The 'rvanal' package deals with statistical tests of sinusoid fits,
-with radial velocity curves of circular orbits particularly in
-mind. The sorts of things it does are to determine the best period, to
-plot out the best period and competeing aliases, etc. It can also help
-with optimising placement of observations.
+'rvanal' is for diagnosing circular stellar orbits, working out
+periods and the like.
 
-Read the file INSTALL for installation instructions.
+Installation order: subs --> observing --> rvanal
 
-Tom Marsh
+See www.astro.warwick.ac.uk/people/marsh/software for further info.
