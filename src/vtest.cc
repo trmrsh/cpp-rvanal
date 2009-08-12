@@ -33,6 +33,7 @@ for systematic uncertainty, especially for high S/N data}
 #include <iomanip>
 #include <cmath>
 #include "trm_subs.h"
+#include "trm_format.h"
 #include "trm_constants.h"
 #include "trm_input.h"
 #include "trm_rvanal.h"
@@ -79,7 +80,8 @@ int main(int argc, char *argv[]){
       if(data[i].z > 0.) 
 	chisq += Subs::sqr((data[i].y-mean)/data[i].z);
 
-    std::cout << "log10(pfalse) = " << log10(Subs::gammq((nok-1)/2.,chisq/2.)) << std::endl;
+    Subs::Format form;
+    std::cout << "log10(pfalse) = " << form(log10(Subs::gammq((nok-1)/2.,chisq/2.))) << std::endl;
     
   }
 
