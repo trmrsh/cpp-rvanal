@@ -75,6 +75,7 @@ double Rvanal::bayes_trap(const Subs::Buffer1D<Subs::rv>& data, double flo, doub
     // First point just evaluate at each end of the range
     double fval1 = func(flo);
     double fval2 = func(fhi);
+
     cfactor = std::max(flo, fhi);
     sum     = 0.5*(fhi-flo)*(exp(fval1-cfactor)+exp(fval2-cfactor));
   }else{

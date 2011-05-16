@@ -98,6 +98,7 @@ might be very close to the mark, and it will be fastest.}
 #include <string>
 #include "trm_subs.h"
 #include "trm_constants.h"
+#include "trm_format.h"
 #include "trm_input.h"
 #include "trm_rvanal.h"
 
@@ -173,11 +174,12 @@ int main(int argc, char* argv[]){
     // Loop through until enough calls have been made and possibly convergence has occurred
     int ncount = 0;
     double oldval = DBL_MAX, newval = -DBL_MAX;
+    Subs::Format form;
     while(ncall == 0 || ncount < ncall || (change > 0. && fabs(newval-oldval) > change)){
       ncount++;
       oldval = newval;
       newval = Rvanal::bayes_trap(data, flo, fhi, gmax, mmax, nmonte, seed, ncount == 1);
-      std::cout << "Call number " << ncount << ", log10(integral) = " << newval << std::endl;
+      std::cout << "Call number " << ncount << ", log10(integral) = " << form(newval) << std::endl;
     }
   }
   catch(const std::string& msg){
