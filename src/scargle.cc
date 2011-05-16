@@ -85,10 +85,10 @@ void Rvanal::scargle(double x[], float y[], float e[],
 
     pgram[i] = (ss*cy*cy-2.*cs*sy*cy+cc*sy*sy)/(cc*ss-cs*cs)/2.;
   }
-  delete alpha;
-  delete beta;
-  delete czero;
-  delete szero;
+  delete[] alpha;
+  delete[] beta;
+  delete[] czero;
+  delete[] szero;
   return;
 }
 
