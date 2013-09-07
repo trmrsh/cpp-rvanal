@@ -73,10 +73,10 @@ files.
 #include <algorithm>
 #include <valarray>
 #include "cpgplot.h"
-#include "trm_subs.h"
-#include "trm_input.h"
-#include "trm_plot.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/input.h"
+#include "trm/plot.h"
+#include "trm/rvanal.h"
  
 int main(int argc, char* argv[]){
 

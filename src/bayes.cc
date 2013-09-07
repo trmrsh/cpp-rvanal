@@ -96,11 +96,11 @@ might be very close to the mark, and it will be fastest.}
 #include <cmath>
 #include <cfloat>
 #include <string>
-#include "trm_subs.h"
-#include "trm_constants.h"
-#include "trm_format.h"
-#include "trm_input.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/constants.h"
+#include "trm/format.h"
+#include "trm/input.h"
+#include "trm/rvanal.h"
 
 int main(int argc, char* argv[]){
   

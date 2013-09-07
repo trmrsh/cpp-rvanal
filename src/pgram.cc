@@ -54,11 +54,11 @@ and peaks in periodograms tend to be spaced more uniformly in frequency than per
 #include <cfloat>
 #include <string>
 #include "cpgplot.h"
-#include "trm_subs.h"
-#include "trm_format.h"
-#include "trm_plot.h"
-#include "trm_input.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/format.h"
+#include "trm/plot.h"
+#include "trm/input.h"
+#include "trm/rvanal.h"
 
 int main(int argc, char* argv[]){
   

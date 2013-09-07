@@ -2,7 +2,7 @@
 #define TRM_RVANAL
 
 #include <string>
-#include "trm_subs.h"
+#include "trm/subs.h"
 
 //! Rvanal namespace
 

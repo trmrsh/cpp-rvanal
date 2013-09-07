@@ -54,9 +54,9 @@ give. A typical value may be 0.1 pixels.}
 #include <iostream>
 #include <iomanip>
 #include <list>
-#include "trm_subs.h"
-#include "trm_input.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/input.h"
+#include "trm/rvanal.h"
 
 struct trough{
   double f, c;

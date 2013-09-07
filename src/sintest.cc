@@ -51,10 +51,10 @@ give. A typical value may be 0.1 pixels.}
 #include <sstream>
 #include <cmath>
 #include <climits>
-#include "trm_subs.h"
-#include "trm_input.h"
-#include "trm_constants.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/input.h"
+#include "trm/constants.h"
+#include "trm/rvanal.h"
 
 int main(int argc, char* argv[]){
 

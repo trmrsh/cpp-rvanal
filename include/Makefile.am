@@ -2,6 +2,6 @@
 ##
 ## This is the file that must be edited if you are changing anything in the source directory
 
-EXTRA_DIST = trm_rvanal.h trm_sequence.h
+nobase_include_HEADERS = trm/rvanal.h trm/sequence.h
 
 

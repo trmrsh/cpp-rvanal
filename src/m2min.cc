@@ -1,7 +1,7 @@
 #include <math.h>
-#include "trm_subs.h"
-#include "trm_constants.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/constants.h"
+#include "trm/rvanal.h"
 
 /**
  * m2min computes the minimum mass of the companion to 

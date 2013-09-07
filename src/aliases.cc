@@ -17,7 +17,7 @@ constant to some x, y, error type data. It does so over a user-defined
 frequency range and searches for the frequencies which give minima of
 Chi**2. It refines each of these and then lists and (optionally) plots 
 them over a defined time-interval. The mass function and minimum 
-secondary mass (for primary=0.5 Msun) are also reported.
+secondary mass (for a user-defined primary mass) are also reported.
 
 Best periods are those of minimum chi**2. !!emph{aliases} allows the
 user to set limits on the number of best periods to report on and on
@@ -64,6 +64,8 @@ minima are ignored}
 !!arg{fmax} {Maximum mass function to accept. i.e. this is the maximum
 value of the minimum mass of the companion to the star of interest. Use this
 to eliminate implausible 1000 solar mass companions etc. }
+!!arg{m1} {Assumed mass of primary (i.e. the star that has led to the velocities
+being measured), used in order to compute minimum companion masses.}
 !!arg{sigma} {Systematic uncertainty to add to uncertainties, to soften the
 effects of unrealistically small error bars that bright objects tend to
 give. A typical value may be 0.1 pixels.}
@@ -124,17 +126,17 @@ exactly when you acquire the next point. If trying to distinguish between
 #include <sstream>
 #include <list>
 #include "cpgplot.h" 
-#include "trm_subs.h"
-#include "trm_plot.h"
-#include "trm_input.h"
-#include "trm_constants.h"
-#include "trm_telescope.h"
-#include "trm_date.h"
-#include "trm_time.h"
-#include "trm_star.h"
-#include "trm_ephem.h"
-#include "trm_observing.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/plot.h"
+#include "trm/input.h"
+#include "trm/constants.h"
+#include "trm/telescope.h"
+#include "trm/date.h"
+#include "trm/time.h"
+#include "trm/star.h"
+#include "trm/ephem.h"
+#include "trm/observing.h"
+#include "trm/rvanal.h"
 
 struct Trough{
   double f, c;
@@ -157,6 +159,7 @@ int main(int argc, char* argv[]){
     input.sign_in("nmax",      Subs::Input::GLOBAL, Subs::Input::PROMPT);
     input.sign_in("width",     Subs::Input::GLOBAL, Subs::Input::PROMPT);
     input.sign_in("fmax",      Subs::Input::GLOBAL, Subs::Input::PROMPT);
+    input.sign_in("m1",        Subs::Input::GLOBAL, Subs::Input::PROMPT);
     input.sign_in("sigma",     Subs::Input::GLOBAL, Subs::Input::PROMPT);
     input.sign_in("scale",     Subs::Input::LOCAL,  Subs::Input::PROMPT);
     input.sign_in("plot",      Subs::Input::LOCAL,  Subs::Input::PROMPT);
@@ -195,6 +198,8 @@ int main(int argc, char* argv[]){
     input.get_value("width", width, 0.01, 0., 1000., "avoidance width near a minimum (cycles/day)");
     double fmax;
     input.get_value("fmax", fmax, 50., 1.e-5, 10000., "maximum mass function to consider (solar masses)");
+    double m1;
+    input.get_value("m1", m1, 0.5, 0.001, 10000., "primary mass (solar masses)");
     double sigma;
     input.get_value("sigma", sigma, 0., 0., 1000., "systematic uncertainty to add in quadrature to errors (km/s)");
 
@@ -375,7 +380,7 @@ int main(int argc, char* argv[]){
 	   << ", chisq = " << std::setprecision(6) << cbest[nok] 
 	   << ", amp = " << std::setprecision(5) << a[nok] << " km/s, fm = " 
 	   << Rvanal::fm(fbest[nok],a[nok]) << " Msun, m2min = " 
-	   << Rvanal::m2min(fbest[nok],a[nok],0.5) << " Msun."  << std::endl;
+	   << Rvanal::m2min(fbest[nok],a[nok],m1) << " Msun."  << std::endl;
     }
     
     // Plot

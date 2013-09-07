@@ -1,5 +1,5 @@
-#include "trm_constants.h"
-#include "trm_rvanal.h"
+#include "trm/constants.h"
+#include "trm/rvanal.h"
 
 /**
  * fm computes the mass function equivalent to a

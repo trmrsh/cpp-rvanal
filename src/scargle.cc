@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include "trm_subs.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/rvanal.h"
 
 void Rvanal::scargle(double x[], float y[], float e[], 
 		     size_t n, double f1, double f2, 

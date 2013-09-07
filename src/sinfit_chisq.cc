@@ -1,8 +1,8 @@
 #include <cmath>
-#include "trm_subs.h"
-#include "trm_constants.h"
-#include "trm_buffer2d.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/constants.h"
+#include "trm/buffer2d.h"
+#include "trm/rvanal.h"
 
 /**
  * Computes the chi**2 after fitting a sine wave plus

@@ -25,11 +25,11 @@ AC_REQUIRE_CPP
 
 dnl Check my other software
 
-AC_CHECK_HEADERS([trm_subs.h trm_position.h trm_constants.h trm_array1d.h],[],AC_MSG_ERROR([cannot find 'subs' headers]))
+AC_CHECK_HEADERS([trm/subs.h trm/position.h trm/constants.h trm/array1d.h],[],AC_MSG_ERROR([cannot find 'subs' headers]))
 
 AC_CHECK_LIB([subs], [main], [], AC_MSG_ERROR([cannot find 'subs' library]))
 
-AC_CHECK_HEADERS([trm_observing.h],[],AC_MSG_ERROR([cannot find 'observing' header]))
+AC_CHECK_HEADERS([trm/observing.h],[],AC_MSG_ERROR([cannot find 'observing' header]))
 
 AC_CHECK_LIB([observing], [main], [], AC_MSG_ERROR([cannot find 'observing' library]))
 

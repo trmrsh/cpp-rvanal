@@ -44,11 +44,11 @@ distribution of this width around the times read in from the file}
 #include <cmath>
 #include <climits>
 #include "cpgplot.h"
-#include "trm_subs.h"
-#include "trm_plot.h"
-#include "trm_input.h"
-#include "trm_constants.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/plot.h"
+#include "trm/input.h"
+#include "trm/constants.h"
+#include "trm/rvanal.h"
 
 int main(int argc, char* argv[]){
   

@@ -53,11 +53,11 @@ give. A typical value may be 0.1 pixels (specified in km/s)}
 #include <sstream>
 #include <list>
 #include "cpgplot.h" 
-#include "trm_subs.h"
-#include "trm_constants.h"
-#include "trm_plot.h"
-#include "trm_input.h"
-#include "trm_rvanal.h"
+#include "trm/subs.h"
+#include "trm/constants.h"
+#include "trm/plot.h"
+#include "trm/input.h"
+#include "trm/rvanal.h"
 
 struct Trough{
   double f, c;

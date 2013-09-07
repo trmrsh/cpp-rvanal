@@ -74,9 +74,9 @@ should be substantial. The selection pressure factor should be of order 0.5.
 #include <iostream.h>
 #include <fstream.h>
 #include <math.h>
-#include "trm_subs.h"
-#include "trm_constants.h"
-#include "trm_sequence.h"
+#include "trm/subs.h"
+#include "trm/constants.h"
+#include "trm/sequence.h"
 #include "dprob.h"
 
 int main(int argc, char* argv[]){
