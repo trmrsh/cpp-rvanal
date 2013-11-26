@@ -5,3 +5,10 @@ periods and the like.
 Installation order: subs --> observing --> rvanal
 
 See www.astro.warwick.ac.uk/people/marsh/software for further info.
+
+Installation
+------------
+
+Main installation notes are in 'INSTALL'. If installing for the first time,
+run './bootstrap' before anything else which tries to get the autotools
+stuff configured.
