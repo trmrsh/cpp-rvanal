@@ -4,15 +4,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = src doc include
 
-export: dist
-	scp $(PACKAGE)-$(VERSION).tar.gz $(WEB_SERVE):$(WEB_PATH)/software/.
-	ssh $(WEB_SERVE) "cd $(WEB_PATH)/software ; \rm -f $(PACKAGE).tar.gz ; ln -s $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE).tar.gz; \rm -fr $(PACKAGE); mkdir $(PACKAGE)"
-	scp -r doc/html $(WEB_SERVE):$(WEB_PATH)/software/$(PACKAGE)/.
-	ssh $(WEB_SERVE) "cd $(WEB_PATH)/software; sed -e 's%<\!-- rvanal version --><td>.*</td>%<\!-- rvanal version --><td>$(VERSION)</td>%' index.html > junk.html; mv junk.html index.html"
-	ssh $(WEB_SERVE) "cd $(WEB_PATH)/software; sed -e 's%<\!-- rvanal date --><td>.*</td>%<\!-- rvanal date --><td>$(DATE)</td>%' index.html > junk.html; mv junk.html index.html"
-
 ## file of aliases
-
 ALIASES = Rvanal
 
 .PHONY : $(ALIASES)
@@ -23,10 +15,15 @@ progdir = @bindir@/@PACKAGE@
 
 prog_DATA = $(ALIASES)
 
+# Note horribly complex looking line to generate a file that can be sourced
+# unde both bash and csh. It's designed to get through variable expansion
 $(ALIASES):
 	@echo '#' > $(ALIASES)
 	@echo '# This file defines aliases for the $(PACKAGE) v$(VERSION) software.' >> $(ALIASES)
 	@echo '# Source it to define them.' >> $(ALIASES)
+	@echo '#' >> $(ALIASES)
+	@echo '# this to allow both bash and csh to work' >> $(ALIASES)
+	@echo 'test "$$?BASH_VERSION" = "0" || eval '\''alias() { command alias "$$1=$$2"; }'\' >> $(ALIASES)
 	@echo '#' >> $(ALIASES)
 	@echo 'alias aliases   $(progdir)/aliases'   >> $(ALIASES)
 	@echo 'alias bayes     $(progdir)/bayes'     >> $(ALIASES)
