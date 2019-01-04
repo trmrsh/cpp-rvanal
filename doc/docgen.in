@@ -7,7 +7,7 @@
 
 $html = shift;
 
-require "document.pl";
+require "./document.pl";
 $time = localtime;
 
 # Command classes. Individual files require pointers
