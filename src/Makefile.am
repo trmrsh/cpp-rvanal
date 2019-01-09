@@ -21,9 +21,9 @@ sinfalse_SOURCES = sinfalse.cc
 sintest_SOURCES  = sintest.cc
 vtest_SOURCES    = vtest.cc
 
-AM_CPPFLAGS = -I../include -I../. $(PCRECPP_CPPFLAGS)
+AM_CPPFLAGS = -I../include -I../.
 
-LDADD = librvanal.la $(PCRECPP_LIBS)
+LDADD = librvanal.la
 
 ## Library
 
